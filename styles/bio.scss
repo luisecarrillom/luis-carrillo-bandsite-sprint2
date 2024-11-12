@@ -1,0 +1,466 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;700&display=swap');
+
+
+$primary-color: #333;
+$secondary-color: #f4f4f4;
+$accent-color: #ffcc00;
+$font-family: 'Nunito Sans', sans-serif;
+$active-color: #fff;
+$inactive-color: #b0b0b0;
+$underline-color: #fff;
+
+// media queries
+@mixin mobile {
+    @media (max-width: 767px) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: 768px) and (max-width: 1279px) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: 1280px) {
+        @content;
+    }
+}
+
+body {
+    font-family: $font-family;
+    background-color: $secondary-color;
+    color: $primary-color;
+    margin: 0;
+    padding: 0;
+}
+
+// Header 
+.header {
+    background-color: $primary-color;
+    color: $secondary-color;
+    padding: 1rem;
+
+    &__nav {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        @include tablet {
+            flex-direction: row;
+            justify-content: left;
+        }
+
+        @include desktop {
+            flex-direction: row;
+            justify-content: left;
+        }
+    }
+
+    &__logo {
+        display: block;
+        margin-bottom: 1rem;
+
+        @include tablet {
+            margin-bottom: 0;
+            margin-right: 1rem;
+        }
+
+        @include desktop {
+            margin-bottom: 0;
+            margin-right: 1rem;
+        }
+
+        img {
+            max-height: 20px;
+            max-width: 120px;
+        }
+    }
+
+    &__menu {
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+        padding: 0;
+        margin: 0;
+
+        @include mobile {
+            justify-content: center;
+        }
+    }
+
+    &__menu-item a {
+        color: $inactive-color;
+        text-decoration: none;
+        font-weight: 500;
+        position: relative;
+
+        &:hover,
+        &:focus,
+        &.active {
+            color: $active-color;
+        }
+
+        &.active::after {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            height: 2px;
+            width: 100%;
+            background-color: $underline-color;
+        }
+
+        &:hover::after,
+        &:focus::after {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            height: 2px;
+            width: 100%;
+            background-color: $underline-color;
+        }
+    }
+}
+
+// Hero section
+.hero {
+    position: relative;
+    text-align: center;
+    color: white;
+
+    &__image {
+        width: 100%;
+        height: auto;
+    }
+
+    &__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(50, 50, 50, 0.5); 
+        pointer-events: none; 
+   }
+
+    &__title {
+        position: absolute;
+        top: 40%;
+        left: 30%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 48px;
+        font-weight: 700;
+
+        @include mobile {
+            top: 40%;
+            font-size: 25px;
+             left: 35%;
+         }
+
+        @include desktop {
+            font-size: 60px;
+        }
+    }
+}
+
+//Bio sectuib
+.bio {
+    background-color: #FFFFFF;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: auto;
+
+    &__header {
+        font-size: 36px;
+        font-weight: bold;
+        line-height: 44px;
+        margin-bottom: 1rem;
+    }
+
+    &__image {
+        width: 100%;
+        max-width: 100%;
+        display: block;
+        margin: 0 auto 1.5rem;
+    }
+
+    &__quote {
+        font-size: 22px;
+        line-height: 32px;
+        font-weight: 500;
+        margin-bottom: 1.5rem;
+        text-align: justify;
+        font-weight: bold;
+    }
+
+    &__ {
+        font-size: 14px;
+        line-height: 22px;
+        font-weight: 400;
+        margin-bottom: 1.5rem;
+        text-align: justify;
+    }
+
+    &__text {
+        font-size: 14px;
+        line-height: 22px;
+        font-weight: 400;
+        margin-bottom: 1.5rem;
+        text-align: justify;
+    }
+}
+
+@include mobile {
+    .bio__header {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .bio__quote {
+        margin: 0 auto;
+        padding: 0;
+        font-size: 18px;
+    }
+
+    .bio__text {
+        font-size: 13px;
+        line-height: 18px;
+        text-align: justify;
+        padding: 0 10px;
+    }
+}
+
+@include tablet {
+    .bio__header {
+        font-size: 36px;
+        line-height: 44px;
+    }
+
+    .bio__quote {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .bio__text {
+        width: 45%;
+        display: inline-block;
+        text-align: justify;
+      }
+
+      .bio__text:first-of-type {
+        margin-right: 5%;
+        float: left;
+      }
+
+      .bio__text:last-of-type {
+        float: right;
+      }
+}
+
+
+@include desktop {
+    
+    .bio__header {
+        font-size: 48px;
+        line-height: 56px;
+    }
+        .bio__image {
+            max-width: 80%;
+        }
+
+        .bio__quote {
+            font-size: 24px;
+            line-height: 32px;
+        }
+
+        .bio__text {
+            font-size: 14px;
+            line-height: 22px;
+            margin-bottom: 1rem;
+            width: 45%;
+            display: inline-block;
+            text-align: justify;
+    
+            &:first-of-type {
+                margin-right: 5%;
+                float: left;
+            }
+    
+            &:last-of-type {
+                float: right;
+            }
+        }
+    }
+
+    //Gallery
+    .gallery {
+        background-color: #FAFAFA; 
+        padding: 2rem;
+        text-align: center;
+    
+        &__header {
+            font-size: 24px;
+            line-height: 32px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+    
+        &__grid {
+            display: grid;
+            gap: 1rem;
+    
+           
+            grid-template-columns: 1fr;
+        }
+    
+        &__image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+    }
+    
+    
+    @include tablet {
+        .gallery__grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    
+    
+    @include desktop {
+        .gallery__grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    
+
+// Footer 
+.footer {
+    background-color: #323232;
+    color: #FFFFFF;
+    padding: 2rem;
+    font-family: 'Nunito Sans', sans-serif;
+
+    a {
+        color: #FFFFFF;
+        text-decoration: none;
+    }
+    
+
+@include mobile {
+    .footer__social {
+        margin-top: 0.5rem;
+        display: flex;
+        gap: 2rem; 
+        justify-content: left;
+    }
+
+    .footer__logo {
+        margin-top: 1.5rem;
+        text-align: left;
+    }
+
+    .footer__copyright {
+        margin-top: 0.5rem;
+        font-size: 10px;
+        line-height: 18px;
+        text-align: left;
+    }
+}
+
+    @include tablet {
+        .footer__top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .footer__header {
+                font-size: 36px;
+                line-height: 44px;
+            }
+
+            .footer__social {
+                margin-top: 0;
+                display: flex;
+                gap: 2rem;
+                margin-left: -10rem; 
+            }
+
+            .footer__logo {
+                margin: 0;
+            }
+        }
+
+        .footer__content {
+            display: flex;
+            justify-content: space-between;
+            text-align: left;
+        }
+
+        .footer__copyright {
+            margin-top: 2rem;
+            font-size: 14px;
+            line-height: 20px;
+            text-align: left;
+        }
+    }
+
+    @include desktop {
+        .footer__top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .footer__header {
+                font-size: 36px;
+                line-height: 44px;
+            }
+
+            .footer__social {
+                display: flex;
+                gap: 2rem;
+                margin-left: -10rem; 
+            }
+
+            .footer__logo {
+                margin: 0;
+            }
+        }
+
+        .footer__content {
+            display: flex;
+            justify-content: space-between;
+            text-align: left;
+        }
+
+        .footer__copyright {
+            font-size: 14px;
+            line-height: 20px;
+            text-align: left;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
